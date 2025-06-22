@@ -67,6 +67,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
 cask "brave-browser"
+cask "1password"
 
 #cask "advancedrestclient"
 #cask "anaconda"
