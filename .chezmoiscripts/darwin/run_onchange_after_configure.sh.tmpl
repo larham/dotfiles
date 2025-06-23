@@ -3,6 +3,7 @@
 
 set -e
 set -o pipefail
+# set -x # trace for debugging
 
 # assembled from:
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
@@ -55,8 +56,8 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # TODO need to get script way to turn off control-space shortcut in macos
 # https://stackoverflow.com/questions/20245652/how-to-unbind-command-control-space-key-from-mac-os-x-10-9#answer-42668983
 
-# Set finder sidebar icon size to medium
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+# Set finder sidebar icon size to small
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
 # Disable automatic termination of inactive apps
 defaults write -g NSDisableAutomaticTermination -bool true
@@ -66,6 +67,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
 # Resume apps/windows system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool true
@@ -168,7 +170,6 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Follow the keyboard focus while zoomed in
 # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-
 defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 defaults write NSGlobalDomain NSLinguisticDataAssetsRequested -array en en_US
 #defaults write NSGlobalDomain NSUserDictionaryReplacementItems -array
@@ -201,11 +202,87 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeF
 defaults write NSGlobalDomain com.apple.mouse.scaling -float 1.5
 defaults write NSGlobalDomain com.apple.scrollwheel.scaling -float 0.1265
 
-
-
 # defaults write -g ApplePressAndHoldEnabled -bool false
 
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# ===========================
+# Finder
+# ===========================
+
+# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+# defaults write com.apple.finder QuitMenuItem -bool true
+
+# Show icons for hard drives, servers, and removable media on the desktop
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# Make path relative to $HOME dir rather than "/"
+defaults write com.apple.finder PathBarRootAtHome -bool true
+
+# Automatically open a new Finder window when a volume is mounted
+# defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+# defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+# defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+
+# show hidden files everywhere
+# defaults write -g AppleShowAllFiles -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Empty Trash securely by default
+defaults write com.apple.finder EmptyTrashSecurely -bool true
+
+# disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# disable warn on empty trash
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Show the ~/Library folder
+# sudo chflags nohidden ~/Library
+
+# Show the /Volumes folder
+# sudo chflags nohidden /Volumes
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
+
+# show path bar, but do not show status bar
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool false
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # =================================
 # Mac App Store 
@@ -245,7 +322,7 @@ defaults write com.apple.dock autohide -bool true
 # Show hidden apps in a Dock
 defaults write com.apple.dock showhidden -bool true
 
-# Use magnigification when hovering mouse over the icon
+# Use magnification when hovering mouse over the icon
 defaults write com.apple.dock magnification -int 1
 
 # Change minimize/maximize window effect
@@ -291,13 +368,16 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
-
 # ======================================
-# Notifications
+# Notifications, "do not disturb" almost always
 # ======================================
 
-# todo how to make notifications turn off almost always?
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# https://apple.stackexchange.com/questions/145487/how-to-enable-disable-do-not-disturb-from-shell-on-mavericks#368538
+# 10am = 10 * 60 = 600; 11am = 660
+defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui dndEnd -integer 600
+defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui dndStart -integer 660
+killall NotificationCenter # 'resets' Notification Center so that it reads the DND change
+echo "Do Not Disturb is enabled from 11am, turning off next day at 10am, so only 1 hour per day with notifications
 
 # ===========================
 # Screen capture
@@ -313,13 +393,69 @@ defaults write com.apple.screencapture disable-shadow -bool true
 mkdir -p "${HOME}/Screenshots"
 defaults write com.apple.screencapture location -string "${HOME}/Screenshots"
 
-
 # ============================
 # apps
 # ============================
 
 echo "Setting Maccy defaults"
 defaults write org.p0deje.Maccy ~/.local/share/chezmoi/.chezmoiscripts/darwin/Maccy.defaults.plist
+
+# =======================
+# Chrome
+# =======================
+
+# Disable the all too sensitive backswipe on trackpads
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Use the system-native print preview dialog
+defaults write com.google.Chrome DisablePrintPreview -bool true
+defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+# Expand the print dialog by default
+defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
+
+# ===========================
+# Safari & Webkit
+# ===========================
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Set Safari’s home page to `about:blank` for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank"
+
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# Allow hitting the Backspace key to go to the previous page in history
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+# Hide Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool false
+
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+# Add a context menu item for showing the Web Inspector in web views"
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# ======================================
+# Activity monitor
+# ======================================
+
+# Show the main window when launching Activity Monitor
+defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+# Sort Activity Monitor results by CPU usage
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 # ================
 # change /var/log to be writable
