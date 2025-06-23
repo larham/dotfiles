@@ -40,4 +40,4 @@ Configure to eject on lid close & upon keystroke: cmd-alt-ctrl-delete
 Configure to backup daily at night when powered; see ~lah/timemachine-scripting/
 
 ## local mac settings
-`./macos/macos.sh` # will ask for sudo password
+`~/.local/share/chezmoi/macos/macos.sh` # will ask for sudo password
