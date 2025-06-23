@@ -1,0 +1,18 @@
+.*.sw*
+*.pyc
+.DS_Store
+.Python
+.envrc
+.idea
+.pc
+.svn
+.vscode
+vimrc
+/tmp
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes

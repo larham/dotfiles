@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- 
+	cp ./timemachine-mount-run-unmount.sh /usr/local/bin/
+
+    cp ./timemachine-mount-run-unmount.plist $HOME/Library/LaunchAgents/timemachine-mount-run-unmount.plist
+
+    launchctl load "$HOME/Library/LaunchAgents/timemachine-mount-run-unmount.plist"
+ -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>timemachine-mount-run-unmount</string>
+	<key>Program</key>
+	<string>/usr/local/bin/timemachine-mount-run-unmount.sh</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/tmp/timemachine-mount-run-unmount.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/timemachine-mount-run-unmount.log</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>3</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,42 @@
+.oh-my-zsh/cache/**
+.oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
+
+README.md
+
+macos/
+
+{{ if ne .chezmoi.os "darwin" }}
+.config/karabiner
+.hammerspoon
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+.hushlogin
+.local/share/fonts
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+Documents
+{{ else }}
+.bash_aliases
+.config/git/cookies
+.gnupg
+.gnupg/**
+.inputrc
+.oh-my-zsh
+.oh-my-zsh/**
+.p10k.zsh
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.tmux.conf
+.vim
+.vim/**
+.vimrc
+.zprofile
+.zshrc
+{{ end }}
+
+{{ if not .personal }}
+.pypirc
+.psqlrc
+{{ end }}

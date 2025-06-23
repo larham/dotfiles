@@ -1,0 +1,20 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+# allow failure if brew cannot install, such as when app already installed via app store
+#set -eufo pipefail
+
+echo "Installing brew apps; failures will be ignored."
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until this script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
+brew bundle --file=$HOME/.local/share/chezmoi/dot_brewfile/Brewfile.local
+
+# todo python via pyenv?
+
+{{ end -}}

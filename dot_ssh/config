@@ -1,0 +1,22 @@
+Host github
+  Hostname github.com
+  IdentityFile ~/.ssh/github.rsa
+  IdentitiesOnly yes
+Host gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/gitlab_id_ed25519
+Host *.wpengine.net
+  IdentityFile ~/.ssh/reviseWpEngine_ed25519
+  ServerAliveInterval 180
+
+  # Host *
+  #AddKeysToAgent yes
+  #UseKeychain yes
+  #IdentityFile ~/.ssh/id_rsa
+
+
+# install agent from 1password; adjust path as necessary
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  ServerAliveInterval 180
+
