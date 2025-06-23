@@ -24,18 +24,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 osascript -e 'tell application "System Preferences" to quit'
 
-EXISTING_COMPUTER_NAME=$(sudo scutil --get ComputerName)
-
-# special bash usage of [[ ]] and unquoted string with *
-if [[ $EXISTING_COMPUTER_NAME != hammac* ]]; then
-    echo "Changing computer name to: $COMPUTER_NAME"
-    # Set computer name (as done via System Preferences → Sharing)
-    sudo scutil --set ComputerName "$COMPUTER_NAME"
-    sudo scutil --set HostName "$COMPUTER_NAME"
-    sudo scutil --set LocalHostName "$COMPUTER_NAME"
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
-fi
-
 # ===================
 # General
 # ===================
@@ -485,8 +473,3 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 
 # remove fast user switching from menu bar: manual only via pref for Dock & Menu Bar :(
 # /System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -switchToUserID `id -u XXXXXX`
-
-# change /var/log to be writable
-sudo chmod 755 /var/log
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."
