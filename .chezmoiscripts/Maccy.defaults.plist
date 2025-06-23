@@ -1,0 +1,32 @@
+{
+    "KeyboardShortcuts_delete" = "{\\"carbonModifiers\\":2048,\\"carbonKeyCode\\":51}";
+    "KeyboardShortcuts_pin" = "{\\"carbonModifiers\\":2048,\\"carbonKeyCode\\":35}";
+    "KeyboardShortcuts_popup" = "{\\"carbonKeyCode\\":9,\\"carbonModifiers\\":768}";
+    "NSStatusItem Visible Item-1" = 0;
+    "NSWindow Frame com.sindresorhus.Settings.FrameAutosaveName" = "385 239 510 473 0 0 1280 775 ";
+    SUEnableAutomaticChecks = 1;
+    SUHasLaunchedBefore = 1;
+    SULastCheckTime = "2025-06-22 22:21:18 +0000";
+    SUUpdateGroupIdentifier = 3092677587;
+    enabledPasteboardTypes =     (
+        "public.utf8-plain-text",
+        "public.html",
+        "public.file-url",
+        "public.rtf",
+        "public.tiff",
+        "public.png"
+    );
+    menuIcon = scissors;
+    migrations =     {
+        "2024-07-01-version-2" = 1;
+    };
+    pasteByDefault = 1;
+    pinTo = top;
+    popupPosition = window;
+    removeFormattingByDefault = 1;
+    searchMode = fuzzy;
+    showFooter = 1;
+    showSearch = 1;
+    showTitle = 1;
+    windowSize = "[450,800]";
+}
