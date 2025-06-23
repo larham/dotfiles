@@ -1,0 +1,4 @@
+{{- if eq .chezmoi.os "darwin" }}
+echo "Setting Maccy defaults"
+defaults write org.p0deje.Maccy ~/.local/share/chezmoi/.chezmoiscripts/Maccy.defaults.plist
+{{ end -}}
