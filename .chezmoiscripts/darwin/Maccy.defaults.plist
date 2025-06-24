@@ -1,26 +1,22 @@
-{
-    "KeyboardShortcuts_delete" = "{\\"carbonModifiers\\":2048,\\"carbonKeyCode\\":51}";
-    "KeyboardShortcuts_pin" = "{\\"carbonModifiers\\":2048,\\"carbonKeyCode\\":35}";
-    "KeyboardShortcuts_popup" = "{\\"carbonKeyCode\\":9,\\"carbonModifiers\\":768}";
-    "NSStatusItem Visible Item-1" = 0;
-    SUEnableAutomaticChecks = 1;
-    SUHasLaunchedBefore = 1;
-    enabledPasteboardTypes =     (
-        "public.utf8-plain-text",
-        "public.html",
-        "public.file-url",
-        "public.rtf",
-        "public.tiff",
-        "public.png"
-    );
-    menuIcon = scissors;
-    pasteByDefault = 1;
-    pinTo = top;
-    popupPosition = window;
-    removeFormattingByDefault = 1;
-    searchMode = fuzzy;
-    showFooter = 1;
-    showSearch = 1;
-    showTitle = 1;
-    windowSize = "[450,800]";
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeyboardShortcuts_popup</key>
+	<string>{"carbonModifiers":768,"carbonKeyCode":9}</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>menuIcon</key>
+	<string>scissors</string>
+	<key>pasteByDefault</key>
+	<true/>
+	<key>pinTo</key>
+	<string>top</string>
+	<key>popupPosition</key>
+	<string>cursor</string>
+	<key>removeFormattingByDefault</key>
+	<true/>
+	<key>searchMode</key>
+	<string>fuzzy</string>
+</dict>
+</plist>
