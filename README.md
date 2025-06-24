@@ -15,7 +15,7 @@ Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `
 9. Start hammerspoon (for windowing), maccy (for clipboard), google drive; use the prefs of each of these apps to set each to launch at startup
 10. Download [spooninstaller](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip)
 11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip`
-11. Update [~.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error)
+11. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error)
 
 ## local mac settings
 `~/.local/share/chezmoi/macos/macos.sh` # will ask for sudo password
