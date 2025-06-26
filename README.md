@@ -12,10 +12,11 @@ Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `
 6. `chezmoi init https://larham@github.com/larham/dotfiles.git`
 7. `chezmoi apply` # will ask for sudo password, can take a long time to install apps. If it doesn't install apps, use `brew bundle --file=dot_brewfile/Brewfile.local` where that Brewfile.local is under parent directory `~/.local/share/chezmoi` (where all the chezmoi files are stored)
 8. Reboot
-9. Start hammerspoon (for windowing), maccy (for clipboard), google drive; use the prefs of each of these apps to set each to launch at startup
-10. Download [spooninstaller](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip)
-11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip`
-11. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error)
+9. Download [spooninstaller](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip)
+10. `mkdir -p ~/.hammerspoon/Spoons`
+11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip` or, if macos auto-unzipped, `cp -R ~/Downloads/SpoonInstall.spoon ~/.hammerspoon/Spoons/`
+12. Start hammerspoon (for windowing), maccy (for clipboard), google drive; use the prefs of each of these apps to set each to launch at startup
+13. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error)
 
 ## local mac settings
 `~/.local/share/chezmoi/macos/macos.sh` # will ask for sudo password
