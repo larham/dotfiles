@@ -15,7 +15,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 brew bundle --file=$HOME/.local/share/chezmoi/dot_brewfile/Brewfile.local
 
-mkdir $HOME/workspace
+mkdir -p $HOME/workspace
 
 # todo python via pyenv?
 
