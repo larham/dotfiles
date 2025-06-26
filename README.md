@@ -6,10 +6,10 @@ Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `
 
 1. Install git, curl with system package manager: type `git` on command line and it should prompt you to install XCode tools, or:
 2. `xcode-select --install`
-3. [Install brew](https://docs.brew.sh/Installation)
+3. [Install brew](https://brew.sh)
 4. `brew doctor`
 5. `brew install chezmoi`
-6. `chezmoi init https://larham@bitbucket.org/larham/dotfiles.git`
+6. `chezmoi init https://larham@github.com/larham/dotfiles.git`
 7. `chezmoi apply` # will ask for sudo password, can take a long time to install apps. If it doesn't install apps, use `brew bundle --file=dot_brewfile/Brewfile.local` where that Brewfile.local is under parent directory `~/.local/share/chezmoi` (where all the chezmoi files are stored)
 8. Reboot
 9. Start hammerspoon (for windowing), maccy (for clipboard), google drive; use the prefs of each of these apps to set each to launch at startup
