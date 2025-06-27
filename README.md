@@ -16,7 +16,7 @@ Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `
 10. `mkdir -p ~/.hammerspoon/Spoons`
 11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip` or, if macos auto-unzipped, `cp -R ~/Downloads/SpoonInstall.spoon ~/.hammerspoon/Spoons/`
 12. Start hammerspoon (for windowing)
-13. Start Maccy (for clipboard), and open app prefs to enable checkboxes: "Launch at login" and "Paste automatically". Both of these preferences require a manual manipulating System preferences:
+13. Start Maccy (for clipboard), and open app prefs to enable checkboxes: "Launch at login" and "Paste automatically". Both of these preferences require a manual manipulation of System preferences:
     1.  Login -> Open at Login
     2.  Security->Accessibility (Allow the applications below to control your computer)
 14. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error):
