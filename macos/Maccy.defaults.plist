@@ -8,8 +8,10 @@
 	<true/>
 	<key>menuIcon</key>
 	<string>scissors</string>
-	<key>pasteByDefault</key>
-	<true/>
+
+	<!-- cannot set this programmatically because user needs to approve app for assistive -->
+	<!-- <key>pasteByDefault</key> -->
+	<!-- <true/> -->
 	<key>pinTo</key>
 	<string>top</string>
 	<key>popupPosition</key>
