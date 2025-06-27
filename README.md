@@ -15,11 +15,18 @@ Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `
 9. Download [spooninstaller](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/SpoonInstall.spoon.zip)
 10. `mkdir -p ~/.hammerspoon/Spoons`
 11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip` or, if macos auto-unzipped, `cp -R ~/Downloads/SpoonInstall.spoon ~/.hammerspoon/Spoons/`
-12. Start hammerspoon (for windowing), maccy (for clipboard), google drive; use the prefs of each of these apps to set each to launch at startup
-13. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error)
-
-## local mac settings
-`~/.local/share/chezmoi/macos/macos.sh` # will ask for sudo password
+12. Start hammerspoon (for windowing)
+13. Start Maccy (for clipboard), and open app prefs to enable checkboxes: "Launch at login" and "Paste automatically". Both of these preferences require a manual manipulating System preferences:
+    1.  Login -> Open at Login
+    2.  Security->Accessibility (Allow the applications below to control your computer)
+14. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error):
+```bash
+cd ~/.oh-my-zsh
+git init
+git remote add origin https://github.com/ohmyzsh/ohmyzsh.git
+git fetch
+git reset --hard origin/master
+```
 
 ## jettison (todo: incorporate default read/write to automate this)
 Configure to eject on lid close & upon keystroke: cmd-alt-ctrl-delete
