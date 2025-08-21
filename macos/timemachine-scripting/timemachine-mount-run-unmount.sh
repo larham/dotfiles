@@ -31,8 +31,8 @@
 	#
 	# or whatever is correct for your Time Machine drive
 
-# TODO this is current as of 8/2025 on hammacm2
-DEVICE='/dev/disk6s3'
+# TODO this is current as of 2/2024 on hammacm2
+DEVICE='/dev/disk4s3'
 
 
 ################################################################################################
