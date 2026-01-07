@@ -32,8 +32,8 @@
 	# or whatever is correct for your Time Machine drive
 
 # TODO this is current as of 2/2024 on hammacm2
-DEVICE='/dev/disk4s3'
-
+# DEVICE='/dev/disk6s3'  Use UUID which doesn't change
+DEVICE='7CF9D77B-B44B-3DEB-9CA4-012300F56D89'
 
 ################################################################################################
 
