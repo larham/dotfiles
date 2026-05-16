@@ -98,7 +98,7 @@ caffeinate -ims tmutil startbackup --block >> "$LOG" 2>&1
 EXIT="$?"
 
 if [[ "$EXIT" == "0" ]]; then
-	echo "tmutil finished successfully at `timestamp`." >>| "$LOG"
+	echo "tmutil finished successfully at `timestamp`." | tee -a "$LOG"
 else
 	echo "tmutil failed (Exit = $EXIT) at `timestamp`." | tee -a "$LOG"
 
