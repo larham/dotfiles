@@ -1,0 +1,30 @@
+{
+  "plugins": {
+    "chrome-devtools-plugin": {
+      "enabled": true
+    },
+    "modern-web-guidance-plugin": {
+      "enabled": true
+    }
+  },
+  "userSettings": {
+    "globalPermissionGrants": {
+      "allow": [
+        "unsandboxed(cat)",
+        "unsandboxed(ls)",
+        "unsandboxed(grep)",
+        "unsandboxed(find . -name \"*wreath*\")",
+        "unsandboxed(mkdir)",
+        "unsandboxed(python3 --version)",
+        "unsandboxed(git status)",
+        "read_file(/private/tmp/codeguild_generated/blogs)",
+        "read_file(/private/tmp/codeguild_stripped/blogs)",
+        "read_file(/private/tmp/codeguild_generated/contact.html)",
+        "unsandboxed(head)",
+        "unsandboxed(echo)",
+        "unsandboxed(which)"
+      ]
+    },
+    "remoteControlHostname": "hammacm2-misty-rocket"
+  }
+}
