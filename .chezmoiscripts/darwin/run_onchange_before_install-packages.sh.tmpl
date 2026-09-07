@@ -1,6 +1,8 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
+# Brewfile.local hash: {{ include "dot_brewfile/Brewfile.local" | sha256sum }}
+
 # allow failure if brew cannot install, such as when app already installed via app store
 #set -eufo pipefail
 
@@ -12,11 +14,18 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until this script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+brew bundle --file="{{ .chezmoi.sourceDir }}/dot_brewfile/Brewfile.local"
 
-brew bundle --file=$HOME/.local/share/chezmoi/dot_brewfile/Brewfile.local
+# Set zsh as default shell if not already
+CURRENT_SHELL="$(dscl . -read "/Users/$USER" UserShell 2>/dev/null | awk '{print $2}')"
+if [ "$CURRENT_SHELL" != "/bin/zsh" ]; then
+  echo "Setting zsh as default shell..."
+  chsh -s /bin/zsh
+fi
 
 mkdir -p $HOME/workspace
 
 # todo python via pyenv?
 
 {{ end -}}
+
