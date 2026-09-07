@@ -47,7 +47,7 @@ echo "Changing computer name to: $ComputerName"
 sudo scutil --set ComputerName "$ComputerName"
 sudo scutil --set HostName "$ComputerName"
 sudo scutil --set LocalHostName "$ComputerName"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$ComputerName" || true
 
 # ===================
 # General
