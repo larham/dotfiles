@@ -28,11 +28,12 @@
 {{-   $ephemeral = true -}}
 {{- end -}}
 
-{{-   $name := promptString "name for git:" "Larry Hamel" -}}
-{{-   $email := promptString "email for git:" "larhamel@gmail.com" -}}
+{{- $userData := (include ".chezmoidata.json" | fromJson).user -}}
+{{- $name := promptString "name for git:" $userData.name -}}
+{{- $email := promptString "email for git:" $userData.email -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "hammac" -}}
+{{-   if eq $hostname $userData.defaultHost -}}
 {{-     $personal = true -}}
 {{-   else if stdinIsATTY -}}
 {{-     if hasKey . "headless" -}}

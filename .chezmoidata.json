@@ -1,0 +1,10 @@
+{
+  "user": {
+    "name": "Larry Hamel",
+    "email": "larhamel@gmail.com",
+    "computerNamePrefix": "ham",
+    "defaultHost": "hammac",
+    "timeMachineUuid": "7CF9D77B-B44B-3DEB-9CA4-012300F56D89",
+    "geminiRemoteControlHostname": "hammacm2-misty-rocket"
+  }
+}

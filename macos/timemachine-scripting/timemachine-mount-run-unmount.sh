@@ -31,9 +31,15 @@
 	#
 	# or whatever is correct for your Time Machine drive
 
-# TODO this is current as of 2/2024 on hammacm2
-# DEVICE='/dev/disk6s3'  Use UUID which doesn't change
-DEVICE='7CF9D77B-B44B-3DEB-9CA4-012300F56D89'
+# Look for Time Machine UUID in .chezmoidata.json via chezmoi data, fallback to default below
+DEVICE=""
+if command -v chezmoi >/dev/null 2>&1; then
+	DEVICE=$(chezmoi data 2>/dev/null | grep '"timeMachineUuid"' | head -1 | sed -E 's/.*: *"([^"]+)".*/\1/')
+fi
+if [[ -z "$DEVICE" ]]; then
+	# Fallback UUID (can be edited in .chezmoidata.json or here)
+	DEVICE='7CF9D77B-B44B-3DEB-9CA4-012300F56D89'
+fi
 
 ################################################################################################
 

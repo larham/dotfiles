@@ -34,8 +34,8 @@ osascript -e 'tell application "System Preferences" to quit'
 # ==================
 
 ComputerName=$(sudo scutil --get ComputerName)
-if [[ $ComputerName != ham* ]]; then
-  ComputerName="hammac$(date +%Y)"
+if [[ $ComputerName != {{ .user.computerNamePrefix }}* ]]; then
+  ComputerName="{{ .user.computerNamePrefix }}mac$(date +%Y)"
 fi
 
 read -p "What is this computer's name (default \"$ComputerName\")? " newName

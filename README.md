@@ -2,6 +2,16 @@
 
 Configurations managed by [chezmoi](https://github.com/twpayne/chezmoi). Using `chezmoi cd` will put you into the actual .git directory used by chezmoi as a workspace, distributed by `chezmoi apply`.
 
+## Personal Configuration
+
+All user-specific identity and machine settings are isolated in [`.chezmoidata.json`](./.chezmoidata.json). If you are forking or reusing this repository, edit that file with your own values:
+
+* **`name`** & **`email`**: Your Git author details (used as defaults during `chezmoi init`).
+* **`computerNamePrefix`**: Prefix used when generating the macOS computer name (e.g. `ham` → `hammac2026`).
+* **`defaultHost`**: Hostname that enables personal configurations.
+* **`timeMachineUuid`**: Volume UUID for automated Time Machine backup scripts (`diskutil info <volume>` to find yours).
+* **`geminiRemoteControlHostname`**: Hostname for Gemini CLI remote control.
+
 ## Bootstrap a macos machine using chezmoi + dotfiles repo
 
 1. Install git, curl with system package manager: type `git` on command line and it should prompt you to install XCode tools, or:
