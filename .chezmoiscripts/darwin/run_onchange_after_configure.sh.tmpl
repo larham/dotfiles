@@ -401,6 +401,14 @@ defaults write com.apple.screencapture location -string "${HOME}/Screenshots"
 # defaults export org.p0deje.Maccy - > ~/workspace/dotfiles/macos/Maccy.defaults.orig.plist
 defaults import org.p0deje.Maccy -  < ~/.local/share/chezmoi/macos/Maccy.defaults.plist
 
+# iTerm2: use ~/.iterm2 folder for preferences and enable loading from custom folder
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+# Terminal.app: configure default profile to use MesloLGS NF
+osascript -e 'tell application "Terminal" to set font name of settings set "Basic" to "MesloLGS-NF-Regular"' \
+          -e 'tell application "Terminal" to set font size of settings set "Basic" to 13' 2>/dev/null || true
+
 # =======================
 # Chrome
 # =======================
