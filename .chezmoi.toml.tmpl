@@ -31,6 +31,10 @@
 {{- $userData := (include ".chezmoidata.json" | fromJson).user -}}
 {{- $name := promptString "name for git:" $userData.name -}}
 {{- $email := promptString "email for git:" $userData.email -}}
+{{- $timeMachineUuid := "" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $timeMachineUuid = promptString "UUID of hard drive for Time Machine backup (empty will use default id from way back when):" $userData.timeMachineUuid -}}
+{{- end -}}
 
 {{- if not $ephemeral -}}
 {{-   if eq $hostname $userData.defaultHost -}}
@@ -74,5 +78,6 @@
     osid = {{ $osID | quote }}
     name = {{ $name | quote }}
     email = {{ $email | quote }}
+    timeMachineUuid = {{ $timeMachineUuid | quote }}
 [diff]
     exclude = ["externals"]

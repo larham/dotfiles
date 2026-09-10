@@ -24,7 +24,7 @@
         "unsandboxed(echo)",
         "unsandboxed(which)"
       ]
-    },
-    "remoteControlHostname": "{{ .user.geminiRemoteControlHostname }}"
+    }{{- if .user.geminiRemoteControlHostname }},
+    "remoteControlHostname": "{{ .user.geminiRemoteControlHostname }}"{{- end }}
   }
 }
