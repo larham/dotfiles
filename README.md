@@ -27,11 +27,12 @@ All user-specific identity and machine settings are isolated in [`.chezmoidata.j
 11. `cd  ~/.hammerspoon/Spoons && unzip ~/Downloads/SpoonInstall.spoon.zip` or, if macos auto-unzipped, `cp -R ~/Downloads/SpoonInstall.spoon ~/.hammerspoon/Spoons/`
 12. Start hammerspoon (for windowing)
 13. Start Maccy (for clipboard), and open app prefs to enable checkboxes: "Launch at login" and "Paste automatically". Both of these preferences require a manual manipulation of System preferences:
-    1.  Login -> Open at Login
-    2.  Security->Accessibility (Allow the applications below to control your computer)
+    1. Login -> Open at Login
+    2. Security->Accessibility (Allow the applications below to control your computer)
 14. Some system prefs have to be done manually:
-    1.  Trackpad: click to touch
+    1. Trackpad: click to touch
 15. Update [~/.oh-my-zsh](https://stackoverflow.com/questions/33486633/upgrading-oh-my-zsh-gives-me-not-a-git-repository-error):
+
 ```bash
 cd ~/.oh-my-zsh
 git init
@@ -41,19 +42,23 @@ git reset --hard origin/master
 ```
 
 ## jettison (todo: incorporate default read/write to automate this)
+
 Configure to eject on lid close & upon keystroke: cmd-alt-ctrl-delete
 
 ## rclone external backups
+
 `sudo chmod a+w /var/log`
 See service plist 'larry.rclone.sync.plist' in folder &lt;initials&gt;, which calls script found in same folder, activate with:
 `launchctl load -w ~/<initials>/larry.rclone.sync.plist`
 
 ## timemachineeditor
+
 Configure to backup daily at night when powered; see ~/&lt;initials&gt;/timemachine-scripting/
 
 ## Brew: compare currently installed apps with the install script in order to update install script
 
 To update the local script for installing apps:
+
 ```
 cd /tmp
 brew bundle dump
