@@ -21,6 +21,9 @@
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $computerName := output "scutil" "--get" "ComputerName" | trim -}}
+{{-   if hasKey . "hostname" -}}
+{{-     $computerName = .hostname -}}
+{{-   end -}}
 {{-   $hostname = promptString "computer name:" $computerName -}}
 {{- end -}}
 
@@ -29,11 +32,26 @@
 {{- end -}}
 
 {{- $userData := (include ".chezmoidata.json" | fromJson).user -}}
-{{- $name := promptString "name for git:" $userData.name -}}
-{{- $email := promptString "email for git:" $userData.email -}}
+
+{{- $name := $userData.name -}}
+{{- if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- end -}}
+{{- $name = promptString "name for git:" $name -}}
+
+{{- $email := $userData.email -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- end -}}
+{{- $email = promptString "email for git:" $email -}}
+
 {{- $timeMachineUuid := "" -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $timeMachineUuid = promptString "UUID of hard drive for Time Machine backup (empty will use default id from way back when):" $userData.timeMachineUuid -}}
+{{-   $tmDefault := $userData.timeMachineUuid -}}
+{{-   if hasKey . "timeMachineUuid" -}}
+{{-     $tmDefault = .timeMachineUuid -}}
+{{-   end -}}
+{{-   $timeMachineUuid = promptString "UUID of hard drive for Time Machine backup (empty will use default id from way back when):" $tmDefault -}}
 {{- end -}}
 
 {{- if not $ephemeral -}}
