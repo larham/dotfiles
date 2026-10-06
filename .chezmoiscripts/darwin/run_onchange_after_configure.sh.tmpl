@@ -70,7 +70,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
 # Resume apps/windows system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool true
+defaults write -g NSQuitAlwaysKeepsWindows -bool true
 
 # Expand save panel by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
@@ -296,7 +296,7 @@ defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
-#defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+#defaults write -g NSQuitAlwaysKeepsWindows -bool false
 
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
