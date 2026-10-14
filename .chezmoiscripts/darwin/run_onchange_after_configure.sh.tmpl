@@ -83,9 +83,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
-# Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
-
 # =====================
 # Menu bar
 # =====================
@@ -378,7 +375,7 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui dndEnd -integer 600
 defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui dndStart -integer 660
 sudo killall NotificationCenter # 'resets' Notification Center so that it reads the DND change
-echo "Do Not Disturb is enabled from 11am, turning off next day at 10am, so only 1 hour per day with notifications
+echo "Do Not Disturb is enabled from 11am, turning off next day at 10am, so only 1 hour per day with notifications"
 
 # ===========================
 # Screen capture
@@ -441,15 +438,7 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # Allow hitting the Backspace key to go to the previous page in history
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
-# Hide Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-# Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# Add a context menu item for showing the Web Inspector in web views"
+# Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # ======================================
